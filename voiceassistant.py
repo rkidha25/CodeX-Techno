@@ -10,7 +10,7 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 def listen():
-    with sr.Microphone as source:
+    with sr.Microphone() as source:
         print("listening")
         audio = recognizer.listen(source)
 
@@ -53,7 +53,7 @@ def process_command(command):
 
 def main():
     speak("voice assistant activated, say something")
-    while true:
+    while True:
         command = listen()
         if command:
             process_command(command)
